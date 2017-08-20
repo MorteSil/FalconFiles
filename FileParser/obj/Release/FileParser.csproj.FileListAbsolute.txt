@@ -15,5 +15,4 @@ P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4Fil
 P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps.application
 P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps.exe
 P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps.pdb
-P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\FileParser.csprojResolveAssemblyReference.cache
 P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\FileParser.csproj.CoreCompileInputs.cache

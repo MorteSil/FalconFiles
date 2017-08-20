@@ -1824,9 +1824,9 @@ namespace FileParser
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
                                 Text1.AppendText("**** Entry " + j + " ****\n");
-                                Text1.AppendText("(" + reader.BaseStream.Position + ") Weapon ID: " + reader.ReadInt16() + "\n");
-                                Text1.AppendText("(" + reader.BaseStream.Position + ") New Weapon ID: " + reader.ReadInt16() + "\n");
-                                Text1.AppendText("(" + reader.BaseStream.Position + ") Weapon Count: " + reader.ReadInt16() + "\n");
+                                Text1.AppendText("(" + reader.BaseStream.Position + ") Rocket Pod ID: " + reader.ReadInt16() + "\n");
+                                Text1.AppendText("(" + reader.BaseStream.Position + ") Rocket Weapon ID: " + reader.ReadInt16() + "\n");
+                                Text1.AppendText("(" + reader.BaseStream.Position + ") Rocket Count: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("\n");
                             }
                             break;
@@ -2245,7 +2245,7 @@ namespace FileParser
         /// <param name="e"></param>
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            GetFile(".hdr");
+            GetFile("hdr");
         }
 
 
