@@ -1,0 +1,17 @@
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\bin\Release\F4FileMaps.exe.config
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\bin\Release\F4FileMaps.exe.manifest
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\bin\Release\F4FileMaps.application
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\bin\Release\F4FileMaps.exe
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\bin\Release\F4FileMaps.pdb
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\MainWindow.g.cs
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\App.g.cs
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps_MarkupCompile.cache
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps_MarkupCompile.lref
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\MainWindow.baml
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps.g.resources
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\FileParser.Properties.Resources.resources
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\FileParser.csproj.GenerateResource.Cache
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps.exe.manifest
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps.application
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps.exe
+P:\Documents\Visual Studio 2017\Projects\FileParser\FileParser\obj\Release\F4FileMaps.pdb
