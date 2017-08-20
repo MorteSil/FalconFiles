@@ -322,10 +322,17 @@ namespace FileParser
                     Text1.AppendText("    Parent Header Array: " + (48 * nParentHeaders) + " Bytes \n");
                     if ((bool)CB1.IsChecked && (bool)PHCB.IsChecked)
                     {
+                        int _indexoffset = 0;
                         Text1.AppendText("    ****Parent Header Array Contents****\n");
+                        if (HDRIndex.Text != "0")
+                        {
+                            Int32.TryParse(HDRIndex.Text, out int _index);
+                            reader.BaseStream.Position += (_index * 48);
+                            _indexoffset = _index;
+                        }
                         for (int i = 0; i < Math.Min(Int32.Parse(TB1.Text), nParentHeaders); i++)
                         {
-                            Text1.AppendText("      ****Entry " + i + "****\n");
+                            Text1.AppendText("      ****Entry " + (i + _indexoffset) + "****\n");
                             Text1.AppendText("(" + reader.BaseStream.Position + ")       Radius: " + reader.ReadSingle().ToString() + "\n");
                             Text1.AppendText("(" + reader.BaseStream.Position + ")       MinX: " + reader.ReadSingle().ToString() + "\n");
                             Text1.AppendText("(" + reader.BaseStream.Position + ")       MaxX: " + reader.ReadSingle().ToString() + "\n");
@@ -561,6 +568,69 @@ namespace FileParser
 
                         // BLitPrimitiveNode Data
                         PrintLightString(reader, ptrBasePosition);
+                        break;
+
+                    case 12: //BTransNode
+                        Text1.AppendText("****BTransNode****\n");
+                        //Inherited BSubtree->BNode
+                        PrintBNode(reader, ptrBasePosition);
+
+                        // Inherited SubTree
+                        nextNode = PrintBSubTree(reader, ptrBasePosition);
+
+                        // TransNode
+                        PrintTransNode(reader, ptrBasePosition);
+                        break;
+
+                    case 13: //ScalNode
+                        Text1.AppendText("****BScaleNode****\n");
+                        // Inherited Subtree->Bnode
+                        PrintBNode(reader, ptrBasePosition);
+
+                        // Inherited Subtree
+                        nextNode = PrintBSubTree(reader, ptrBasePosition);
+
+                        // ScaleNode
+                        PrintScalNode(reader, ptrBasePosition);
+                        break;
+
+                    case 14: //XDOF Node
+                        Text1.AppendText("****BXDofNod****\n");
+                        // Inherited Subtre->BNode
+                        PrintBNode(reader, ptrBasePosition);
+
+                        // Inherited Subtree
+                        nextNode = PrintBSubTree(reader, ptrBasePosition);
+
+                        // XDof Nod
+                        PrintXDofNode(reader, ptrBasePosition);
+                        break;
+
+                    case 15: // XSwitch Node
+                        Text1.AppendText("****BXSwitchNode****\n");
+                        //Inherited BNode
+                        nextNode = PrintBNode(reader, ptrBasePosition);
+
+                        // XSwitch Node
+                        PrintXSwitchNode(reader, ptrBasePosition);
+                        break;
+
+                    case 16: // Render Control Node
+                        Text1.AppendText("****BRenderControlNode****\n");
+                        // Inherited BNode
+                        nextNode = PrintBNode(reader, ptrBasePosition);
+
+                        // RenderControlNode
+                        PrintRenderControlNode(reader, ptrBasePosition);
+                        break;
+
+                    case 17: // Culled Node
+                        Text1.AppendText("****BCulledNode****\n");
+                        // Inherited BNode
+                        nextNode = PrintBNode(reader, ptrBasePosition);
+
+                        // Culled Node
+                        PrintCulledNode(reader, ptrBasePosition);
                         break;
                 }   // End Switch 
 
@@ -1123,6 +1193,7 @@ namespace FileParser
             dataAddress = reader.ReadUInt32() + ptrBasePosition;            
             Text1.AppendText("(" + fPos + ") Primitive Pointer: " + dataAddress + "\n");
             
+            // Start of Poly/Prim Object
             // Get the Poly Type
             fPos = reader.BaseStream.Position;
             int polyType = reader.ReadInt32();            
@@ -1275,6 +1346,156 @@ namespace FileParser
             Text1.AppendText("(" + reader.BaseStream.Position + ") Point D: " + reader.ReadSingle().ToString() + "\n");
             Text1.AppendText("(" + reader.BaseStream.Position + ") RGBA Front:" + (ptrBasePosition + reader.ReadInt32()) + "\n");
             Text1.AppendText("(" + reader.BaseStream.Position + ") RGBA Back:" + (ptrBasePosition + reader.ReadInt32()) + "\n");
+        }
+
+        /// <summary>
+        /// Function to process a TransNode
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="ptrBase"></param>
+        void PrintTransNode(BinaryReader reader, long ptrBase)
+        {
+            Text1.AppendText("(" + reader.BaseStream.Position + ") DOF NUmber: " + reader.ReadInt32() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Min: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Max: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Multiplier: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Future: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Flags: " + reader.ReadInt32() + "\n");            
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Translation Point: " + "(" + reader.ReadSingle() + ", " + reader.ReadSingle() + ", " + reader.ReadSingle() + ")");
+
+        }
+
+        /// <summary>
+        /// Function to process a ScaleNode
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="ptrBase"></param>
+        void PrintScalNode(BinaryReader reader, long ptrBase)
+        {
+            Text1.AppendText("(" + reader.BaseStream.Position + ") DOF NUmber: " + reader.ReadInt32() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Min: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Max: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Multiplier: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Future: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Flags: " + reader.ReadInt32() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Scale Factor: " + "(" + reader.ReadSingle() + ", " + reader.ReadSingle() + ", " + reader.ReadSingle() + ")");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Translation Point: " + "(" + reader.ReadSingle() + ", " + reader.ReadSingle() + ", " + reader.ReadSingle() + ")");
+        }
+
+        /// <summary>
+        /// Function to print an XDof Node.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="ptrBase"></param>
+        void PrintXDofNode(BinaryReader reader, long ptrBase)
+        {
+            Text1.AppendText("(" + reader.BaseStream.Position + ") DOF NUmber: " + reader.ReadInt32() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Min: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Max: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Multiplier: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Future: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Flags: " + reader.ReadInt32() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") MATRIX Row 0: " + reader.ReadSingle().ToString() + ", " + reader.ReadSingle().ToString() + ", " + reader.ReadSingle().ToString() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") MATRIX Row 1: " + reader.ReadSingle().ToString() + ", " + reader.ReadSingle().ToString() + ", " + reader.ReadSingle().ToString() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") MATRIX Row 2: " + reader.ReadSingle().ToString() + ", " + reader.ReadSingle().ToString() + ", " + reader.ReadSingle().ToString() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Translation Point: " + "(" + reader.ReadSingle() + ", " + reader.ReadSingle() + ", " + reader.ReadSingle() + ")");
+        }
+
+        /// <summary>
+        /// Function to process an XSwitchNode.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="ptrBase"></param>
+        void PrintXSwitchNode(BinaryReader reader, long ptrBase)
+        {
+            // Get the Switch Number
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Switch Number: " + reader.ReadInt32().ToString() + "\n");
+            long fPos = reader.BaseStream.Position;
+            // Get the flags
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Flags: " + reader.ReadInt32() + "\n");
+
+            // Get the Number of Children
+            int nChild = reader.ReadInt32();
+            Text1.AppendText("(" + fPos + ") Number of Children: " + nChild + "\n");
+            fPos += 4;
+
+            // Get a pointer the to the Children Collection
+            long ChildPtr = reader.ReadInt32();
+            if (ChildPtr > 0)
+                ChildPtr += ptrBasePosition;
+            Text1.AppendText("(" + fPos + ") Children pointer: " + ChildPtr + "\n");
+
+            // Get the list of SubNodes from the position
+            reader.BaseStream.Position = ChildPtr;
+
+            // Recursively process the Child Trees
+            for (int i = 0; i < nChild; i++)
+            {
+                fPos = reader.BaseStream.Position;
+                ChildPtr = reader.ReadInt32();
+                if (ChildPtr > 0)
+                    ChildPtr += ptrBasePosition;
+                Text1.AppendText("(" + fPos + ") Child Pointer: " + ChildPtr + "\n");
+                ProcessTree(reader, ChildPtr);
+            }
+        }
+
+        /// <summary>
+        /// Function to process a RenderControlNode
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="ptrBase"></param>
+        void PrintRenderControlNode(BinaryReader reader, long ptrBase)
+        {
+            int _Control = reader.ReadInt32();
+
+            switch (_Control)
+            {
+                case 0:
+                    for (int i = 0; i < 8; i++)
+                        Text1.AppendText("(" + reader.BaseStream.Position + ") Data Context " + i + " :" + reader.ReadInt32() + "\n");
+                    break;
+
+                case 1:                    
+                    Text1.AppendText("(" + reader.BaseStream.Position + "32 Byte Buffer\n");
+                    reader.BaseStream.Position += 32;
+                    Text1.AppendText("(" + reader.BaseStream.Position + ") ZBias Value: " + reader.ReadSingle() + "\n");
+                    break;
+
+                case 2:
+                    Text1.AppendText("(" + reader.BaseStream.Position + ") Math Mode: " + reader.ReadUInt16() + "\n");
+                    for (int i = 0; i < 5; i++)
+                        Text1.AppendText("(" + reader.BaseStream.Position + ") Arg Type: " + reader.ReadByte() + "\n");
+                    byte _result = reader.ReadByte();
+                    Text1.AppendText("(" + reader.BaseStream.Position + ") Result Type: " + _result + "\n");
+                    Text1.AppendText("(" + reader.BaseStream.Position + ") Result ID: " + reader.ReadUInt32() + "\n");
+                    if (_result == 0)
+                    {
+                        for (int i = 0; i < 5; i++)
+                            Text1.AppendText("(" + reader.BaseStream.Position + ") ID: " + reader.ReadInt32() + "\n");                        
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 5; i++)
+                            Text1.AppendText("(" + reader.BaseStream.Position + ") Value: " + reader.ReadSingle() + "\n");
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Function to process a CulledNode
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="ptrBase"></param>
+        void PrintCulledNode(BinaryReader reader, long ptrBase)
+        {
+            Text1.AppendText("(" + reader.BaseStream.Position + ") A: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") B: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") C: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") D: " + reader.ReadSingle() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Front Node: " + reader.ReadInt32() + "\n");
+            Text1.AppendText("(" + reader.BaseStream.Position + ") Back Node: " + reader.ReadInt32() + "\n");
         }
 
         /// <summary>
@@ -1581,14 +1802,11 @@ namespace FileParser
                             {
 
                                 Text1.AppendText("**** Entry " + j + " ****\n");
-                                for (int i = 0; i < 300; i++)
+                                for (int i = 0; i < 600; i++)
                                 {
-                                    Text1.AppendText("Stores Entry " + i + " Type: " + reader.ReadByte() + "\n");
+                                    Text1.AppendText("Stores Entry " + i + " Count: " + reader.ReadByte() + "\n");
                                 }
-                                for (int i = 0; i < 300; i++)
-                                {
-                                    Text1.AppendText("Stores Entry " + i + " Flag: " + reader.ReadByte() + "\n");
-                                }
+                                
                                 Text1.AppendText("Stores Infinite AG Weapon Type: " + reader.ReadByte() + "\n");
                                 Text1.AppendText("Stores Infinite AA Weapon Type: " + reader.ReadByte() + "\n");
                                 Text1.AppendText("Stores Infinite Gun Type: " + reader.ReadByte() + "\n");
@@ -1732,7 +1950,9 @@ namespace FileParser
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
                                 Text1.AppendText("**** Entry " + j + " ****\n");
-                                Text1.AppendText("(" + reader.BaseStream.Position + ") Offset: (" + reader.ReadSingle() + ", " + reader.ReadSingle() + ", " + reader.ReadSingle() + ")\n");
+                                //x-y flip for coords
+                                float temp = reader.ReadSingle();
+                                Text1.AppendText("(" + reader.BaseStream.Position + ") Offset: (" + reader.ReadSingle() + ", " + temp + ", " + reader.ReadSingle() + ")\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Max Height (m): " + reader.ReadSingle() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Max Width (m): " + reader.ReadSingle() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Max Length (m): " + reader.ReadSingle() + "\n");
@@ -1753,7 +1973,8 @@ namespace FileParser
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
                                 Text1.AppendText("**** Entry " + j + " ****\n");
-                                Text1.AppendText("(" + reader.BaseStream.Position + ") Offset: (" + reader.ReadSingle() + ", " + reader.ReadSingle() + ")\n");
+                                float temp = reader.ReadSingle();
+                                Text1.AppendText("(" + reader.BaseStream.Position + ") Offset: (" + reader.ReadSingle() + ", " + temp + ")\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Type: " + reader.ReadUInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Flags: " + reader.ReadUInt16() + "\n");
                                 Text1.AppendText("\n");

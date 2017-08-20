@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:FileParser"
         xmlns:settings="clr-namespace:FileParser.Properties"
         mc:Ignorable="d"
-        Title="MainWindow" d:DesignWidth="741" d:DesignHeight="768">
+        Title="F4 File Maps" Width="740" Height="740" SizeToContent="Manual"
+        WindowStartupLocation="Manual" Left="20" Top="20">
     <Grid Margin="0,3,-3,-6">
-        <TextBox x:Name="Text1" HorizontalAlignment="Left" Height="604" Margin="295,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="420" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <TextBox x:Name="Text1" HorizontalAlignment="Left" Height="604" Margin="295,61,0,0" TextWrapping="Wrap" Text="Select a File Type to View the Contents." VerticalAlignment="Top" Width="420" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <GroupBox Header="HDR File" HorizontalAlignment="Left" Height="140" Margin="10,50,0,0" VerticalAlignment="Top" Width="276">
             <Grid>
                 <CheckBox x:Name="CB1" Content="Print Element Details" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
@@ -20,6 +21,8 @@
                     <CheckBox x:Name="TextureCB" Content="Texture Array" HorizontalAlignment="Left" Margin="15,70,0,0"/>
                     <CheckBox x:Name="LHCB" Content="Lod Headers Array" HorizontalAlignment="Left" Margin="130,30,0,0"/>
                     <CheckBox x:Name="PHCB" Content="Parent Headers Array" HorizontalAlignment="Left" Margin="130,50,0,0"/>
+                    <Label Content="Header Start Index:" Margin="125, 65, 0, 0"/>
+                    <TextBox x:Name="HDRIndex" Text="0" Margin="233, 43 0, 0" Width="30" Height="20" />
                 </Grid>
                 <Button x:Name="HDRButton" Content="Parse Header" HorizontalAlignment="Center" Margin="10,18,0,5" VerticalAlignment="Bottom" Width="85" Click="Button_Click"/>
             </Grid>
@@ -44,7 +47,7 @@
                 <Button Content="Parse CT" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Width="76" Click="Button_Click_2"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Unit Class File" HorizontalAlignment="Left" Height="180" Margin="10,485,0,0" VerticalAlignment="Top" Width="276">
+        <GroupBox Header="Class Data Files" HorizontalAlignment="Left" Height="180" Margin="10,485,0,0" VerticalAlignment="Top" Width="276">
             <Grid>
                 <ComboBox x:Name="EXTSel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Width="194" SelectedIndex="0">
                     <ComboBox.Items>
