@@ -1711,7 +1711,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") CT Index ID: " + reader.ReadInt32().ToString() + "\n");
                                 for (int i = 0; i < 16; i++)
                                 {
@@ -1776,7 +1776,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Combat Class: " + reader.ReadInt32() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Airframe Index: " + reader.ReadInt32() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Signature Index: " + reader.ReadInt32() + "\n");
@@ -1801,7 +1801,7 @@ namespace FileParser
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
 
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 for (int i = 0; i < 600; i++)
                                 {
                                     Text1.AppendText("Stores Entry " + i + " Count: " + reader.ReadByte() + "\n");
@@ -1823,7 +1823,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Rocket Pod ID: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Rocket Weapon ID: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Rocket Count: " + reader.ReadInt16() + "\n");
@@ -1839,7 +1839,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Flags: " + reader.ReadInt32() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Drag Coefficient: " + reader.ReadSingle() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Weight (lbs): " + reader.ReadSingle() + "\n");
@@ -1864,7 +1864,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Nominal Range (ft): " + reader.ReadSingle() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Top (Rads): " + reader.ReadSingle() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Bottom (Rads): " + reader.ReadSingle() + "\n");
@@ -1882,7 +1882,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Nominal Range (ft): " + reader.ReadSingle() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Top (Rads): " + reader.ReadSingle() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Bottom (Rads): " + reader.ReadSingle() + "\n");
@@ -1901,7 +1901,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText(reader.BaseStream.Length + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Nominal Range (ft): " + reader.ReadSingle() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") FOV Half Angle (Rads): " + reader.ReadSingle() + "\n");
@@ -1920,7 +1920,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") RWR Sound: " + reader.ReadInt32() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") RWR Symbol: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Radar Data Index: " + reader.ReadInt16() + "\n");
@@ -1949,7 +1949,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 //x-y flip for coords
                                 float temp = reader.ReadSingle();
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Offset: (" + reader.ReadSingle() + ", " + temp + ", " + reader.ReadSingle() + ")\n");
@@ -1972,7 +1972,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 float temp = reader.ReadSingle();
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Offset: (" + reader.ReadSingle() + ", " + temp + ")\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Type: " + reader.ReadUInt16() + "\n");
@@ -1989,7 +1989,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") CT ID: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Type: " + reader.ReadByte() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Count: " + reader.ReadByte() + "\n");
@@ -2018,7 +2018,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Name: " + new string(reader.ReadChars(16)).TrimEnd('\0') + "\n");
                                 for (int i = 0; i < 64; i++)
                                 {
@@ -2041,7 +2041,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") CT Index: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Hit Points: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Flags: " + reader.ReadUInt32() + "\n");
@@ -2107,7 +2107,7 @@ namespace FileParser
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
 
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") CT Index: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Repair Time: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Priority: " + reader.ReadByte() + "\n");
@@ -2144,7 +2144,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Index: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Flags: " + reader.ReadUInt16() + "\n");
                                 for (int i = 0; i < 8; i++)
@@ -2168,7 +2168,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") CT Index: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Strength (ECM, Chaff Count, Fuel Capacity, etc...): " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Damage Type: " + reader.ReadInt32() + "\n");
@@ -2205,7 +2205,7 @@ namespace FileParser
                             // Loop through the entries
                             for (int j = 0; j < Math.Min(nEntries - nIndex, nOutputEntries); j++)
                             {
-                                Text1.AppendText("**** Entry " + j + " ****\n");
+                                Text1.AppendText("**** Entry " + (j + nIndex) + " ****\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") CT Index: " + reader.ReadInt16() + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Name: " + new string(reader.ReadChars(20)).TrimEnd('\0') + "\n");
                                 Text1.AppendText("(" + reader.BaseStream.Position + ") Data Rate: " + reader.ReadInt16() + "\n");
