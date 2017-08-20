@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="F4FileMaps.exe" size="84392">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="F4FileMaps.exe" size="84424">
       <assemblyIdentity name="F4FileMaps" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>n2ncL2weBH4AqWbNV4XDyuqAUD91uaW5YGw5N2YePGo=</dsig:DigestValue>
+        <dsig:DigestValue>PAEKdVWgGpJsXCyHuIo95JPuhLNEKVqHaeG/4ZYyNZ0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
